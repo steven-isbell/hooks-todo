@@ -5,8 +5,8 @@ const useInputValue = (initialValue = '') => {
 
   return {
     inputValue,
-    changeInput({ currentTarget }: FormEvent) {
-      return setInputValue(currentTarget);
+    changeInput({ currentTarget: { value } }: FormEvent<HTMLInputElement>) {
+      return setInputValue(value);
     },
     clearInput() {
       return setInputValue('');
