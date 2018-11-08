@@ -7,7 +7,7 @@ const Header = () => (
   <AppBar color="primary" position="static" style={{ height: 64 }}>
     <Toolbar style={{ height: '100%' }}>
       <Typography color="inherit" style={{ fontSize: '24px' }}>
-        ToDo App With Hooks
+        React Hooks ToDo
       </Typography>
     </Toolbar>
   </AppBar>

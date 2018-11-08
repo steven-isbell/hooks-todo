@@ -1,7 +1,34 @@
-import React from 'react';
+import * as React from 'react';
+import Paper from '@material-ui/core/Paper';
+import List from '@material-ui/core/List';
 
-const ToDoList = () => {
-  return null;
-};
+import ToDoItem from './ToDoItem';
+
+interface IToDoListProps {
+  items: Object[];
+  handleItemDelete: React.MouseEventHandler;
+  handleItemCheck: React.MouseEventHandler;
+}
+
+const ToDoList = ({
+  items,
+  handleItemDelete,
+  handleItemCheck
+}: IToDoListProps) =>
+  Boolean(items.length) && (
+    <Paper>
+      <List>
+        {items.map(item => (
+          <ToDoItem
+            {...item}
+            key={item.id}
+            divider={item.id !== items.length - 1}
+            handleClick={() => handleItemDelete(item.id)}
+            handleCheckToggle={() => handleItemCheck(item.id)}
+          />
+        ))}
+      </List>
+    </Paper>
+  );
 
 export default ToDoList;
