@@ -16,15 +16,16 @@ const ToDoList = ({
   handleItemCheck
 }: IToDoListProps) =>
   Boolean(items.length) && (
-    <Paper>
-      <List>
+    <Paper style={{ margin: 16 }}>
+      <List style={{ overflow: 'scroll' }}>
         {items.map(item => (
           <ToDoItem
-            {...item}
             key={item.id}
             divider={item.id !== items.length - 1}
             handleClick={() => handleItemDelete(item.id)}
             handleCheckToggle={() => handleItemCheck(item.id)}
+            checked={item.checked}
+            text={item.text}
           />
         ))}
       </List>
