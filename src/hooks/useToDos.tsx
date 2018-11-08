@@ -6,7 +6,7 @@ type ToDo = {
   checked: boolean;
 };
 
-export const useToDos = (initialValue = []) => {
+const useToDos = (initialValue = []) => {
   const [todos, setTodos] = useState(initialValue);
   const [id, setId] = useState(0);
 
@@ -33,3 +33,5 @@ export const useToDos = (initialValue = []) => {
     }
   };
 };
+
+export default useToDos;

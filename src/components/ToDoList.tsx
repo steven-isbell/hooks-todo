@@ -4,21 +4,26 @@ import List from '@material-ui/core/List';
 
 import ToDoItem from './ToDoItem';
 
+type Item = {
+  id: number;
+  checked: boolean;
+  text: string;
+};
 interface IToDoListProps {
-  items: Object[];
-  handleItemDelete: React.MouseEventHandler;
-  handleItemCheck: React.MouseEventHandler;
+  items: any[];
+  handleItemDelete: Function;
+  handleItemCheck: Function;
 }
 
 const ToDoList = ({
   items,
   handleItemDelete,
   handleItemCheck
-}: IToDoListProps) =>
-  Boolean(items.length) && (
-    <Paper style={{ margin: 16 }}>
-      <List style={{ overflow: 'scroll' }}>
-        {items.map(item => (
+}: IToDoListProps) => (
+  <Paper style={{ margin: 16 }}>
+    <List style={{ overflow: 'scroll' }}>
+      {items.length > 0 &&
+        items.map((item: Item) => (
           <ToDoItem
             key={item.id}
             divider={item.id !== items.length - 1}
@@ -28,8 +33,8 @@ const ToDoList = ({
             text={item.text}
           />
         ))}
-      </List>
-    </Paper>
-  );
+    </List>
+  </Paper>
+);
 
 export default ToDoList;

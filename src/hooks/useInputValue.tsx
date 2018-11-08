@@ -1,26 +1,18 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 
-type Event = {
-  target: {
-    value: string;
-  };
-  which: number;
-  keycode: number;
-};
-
-export const useInputValue = (initialValue = '') => {
+const useInputValue = (initialValue = '') => {
   const [inputValue, setInputValue] = useState(initialValue);
 
   return {
     inputValue,
-    changeInput({ target: { value } }: Event) {
-      return setInputValue(value);
+    changeInput({ currentTarget }: FormEvent) {
+      return setInputValue(currentTarget);
     },
     clearInput() {
       return setInputValue('');
     },
-    keyInput({ which, keycode }: Event, callback: Function) {
-      if (which === 13 || keycode === 13) {
+    keyInput({ which, keyCode }: KeyboardEvent, callback: Function) {
+      if (which === 13 || keyCode === 13) {
         callback(inputValue);
         return true;
       }
@@ -28,3 +20,5 @@ export const useInputValue = (initialValue = '') => {
     }
   };
 };
+
+export default useInputValue;
