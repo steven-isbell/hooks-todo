@@ -4,15 +4,17 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+interface IAddToDoProps {
+  handleInputChange: React.ChangeEventHandler;
+  handleInputKeypress: React.KeyboardEventHandler;
+  value: string;
+}
+
 const AddTodo = ({
   handleInputChange,
   handleInputKeypress,
   value
-}: {
-  handleInputChange: React.ChangeEventHandler;
-  handleInputKeypress: React.KeyboardEventHandler;
-  value: string;
-}) => {
+}: IAddToDoProps) => {
   return (
     <Paper style={{ margin: 16, padding: 16 }}>
       <Grid container>
