@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Paper
+    elevation={0}
+    style={{ padding: 0, margin: 0, backgroundColor: '#fafafa' }}
+  >
+    <AppBar color="primary" position="static" style={{ height: 64 }}>
+      <Toolbar style={{ height: '100%' }}>
+        <Typography color="inherit" style={{ fontSize: '24px' }}>
+          ToDo App With Hooks
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  </Paper>
+);
 
 export default App;
