@@ -10,7 +10,7 @@ interface IAddToDoProps {
   value: string;
 }
 
-const AddTodo = ({
+const AddTodo = React.memo(({
   handleInputChange,
   handleInputKeypress,
   value
@@ -32,6 +32,6 @@ const AddTodo = ({
       </Grid>
     </Paper>
   );
-};
+});
 
 export default AddTodo;

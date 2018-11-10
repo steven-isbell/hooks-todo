@@ -14,22 +14,24 @@ interface IToDoItemProps {
   text: string;
 }
 
-const ToDoItem = ({
-  handleCheckToggle,
-  handleClick,
-  divider,
-  checked,
-  text
-}: IToDoItemProps) => (
-  <ListItem divider={divider}>
-    <Checkbox onClick={handleCheckToggle} checked={checked} disableRipple />
-    <ListItemText primary={text} />
-    <ListItemSecondaryAction>
-      <IconButton aria-label="Delete ToDo" onClick={handleClick}>
-        <DeleteOutlined />
-      </IconButton>
-    </ListItemSecondaryAction>
-  </ListItem>
+const ToDoItem = React.memo(
+  ({
+    handleCheckToggle,
+    handleClick,
+    divider,
+    checked,
+    text
+  }: IToDoItemProps) => (
+    <ListItem divider={divider}>
+      <Checkbox onClick={handleCheckToggle} checked={checked} disableRipple />
+      <ListItemText primary={text} />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Delete ToDo" onClick={handleClick}>
+          <DeleteOutlined />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+  )
 );
 
 export default ToDoItem;

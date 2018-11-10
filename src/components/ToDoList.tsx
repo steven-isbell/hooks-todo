@@ -15,26 +15,24 @@ interface IToDoListProps {
   handleItemCheck: Function;
 }
 
-const ToDoList = ({
-  items,
-  handleItemDelete,
-  handleItemCheck
-}: IToDoListProps) => (
-  <Paper style={{ margin: 16 }}>
-    <List style={{ overflow: 'scroll' }}>
-      {items.length > 0 &&
-        items.map((item: Item) => (
-          <ToDoItem
-            key={item.id}
-            divider={item.id !== items.length - 1}
-            handleClick={() => handleItemDelete(item.id)}
-            handleCheckToggle={() => handleItemCheck(item.id)}
-            checked={item.checked}
-            text={item.text}
-          />
-        ))}
-    </List>
-  </Paper>
+const ToDoList = React.memo(
+  ({ items, handleItemDelete, handleItemCheck }: IToDoListProps) => (
+    <Paper style={{ margin: 16 }}>
+      <List style={{ overflow: 'scroll' }}>
+        {items.length > 0 &&
+          items.map((item: Item) => (
+            <ToDoItem
+              key={item.id}
+              divider={item.id !== items.length - 1}
+              handleClick={() => handleItemDelete(item.id)}
+              handleCheckToggle={() => handleItemCheck(item.id)}
+              checked={item.checked}
+              text={item.text}
+            />
+          ))}
+      </List>
+    </Paper>
+  )
 );
 
 export default ToDoList;
