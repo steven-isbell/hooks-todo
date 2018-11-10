@@ -5,33 +5,37 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 interface IAddToDoProps {
-  handleInputChange: React.ChangeEventHandler;
+  handleInputChange: Function;
   handleInputKeypress: React.KeyboardEventHandler;
   value: string;
+  addTodo: Function;
 }
 
-const AddTodo = React.memo(({
-  handleInputChange,
-  handleInputKeypress,
-  value
-}: IAddToDoProps) => {
-  return (
-    <Paper style={{ margin: 16, padding: 16 }}>
-      <Grid container>
-        <Grid xs={10} md={11} style={{ paddingRight: 16 }} item>
-          <TextField
-            placeholder="ToDo Content"
-            value={value}
-            onKeyPress={handleInputKeypress}
-            onChange={handleInputChange}
-          />
+const AddTodo = React.memo(
+  ({
+    handleInputChange,
+    handleInputKeypress,
+    value,
+    addTodo
+  }: IAddToDoProps) => {
+    return (
+      <Paper style={{ margin: 16, padding: 16 }}>
+        <Grid container>
+          <Grid xs={10} md={11} style={{ paddingRight: 16 }} item>
+            <TextField
+              placeholder="ToDo Content"
+              value={value}
+              onKeyPress={handleInputKeypress}
+              onChange={() => handleInputChange()}
+            />
+          </Grid>
+          <Grid>
+            <Button onClick={() => addTodo()}>Add</Button>
+          </Grid>
         </Grid>
-        <Grid>
-          <Button>Add</Button>
-        </Grid>
-      </Grid>
-    </Paper>
-  );
-});
+      </Paper>
+    );
+  }
+);
 
 export default AddTodo;
