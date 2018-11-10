@@ -9,7 +9,7 @@ import useInputValue from './hooks/useInputValue';
 import useToDos from './hooks/useToDos';
 
 const App = () => {
-  const { inputValue, changeInput, clearInput, keyInput } = useInputValue();
+  const { inputValue, changeInput, clearInput } = useInputValue();
   const { todos, addTodo, removeTodo, checkTodo } = useToDos();
   return (
     <Paper
@@ -18,11 +18,10 @@ const App = () => {
     >
       <Header />
       <AddToDo
-        inputValue={inputValue}
+        value={inputValue}
         handleInputChange={changeInput}
         // handleInputKeypress={keyInput}
-        handleButtonClick={clearInput}
-        addTodo={addTodo}
+        handleButtonClick={addTodo}
       />
       <ToDoList
         items={todos}

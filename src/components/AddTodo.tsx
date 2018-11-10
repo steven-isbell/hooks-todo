@@ -7,11 +7,11 @@ import Grid from '@material-ui/core/Grid';
 interface IAddToDoProps {
   handleInputChange: Function;
   value: string;
-  addTodo: Function;
+  handleButtonClick: Function;
 }
 
 const AddTodo = React.memo(
-  ({ handleInputChange, value, addTodo }: IAddToDoProps) => {
+  ({ handleInputChange, value, handleButtonClick }: IAddToDoProps) => {
     return (
       <Paper style={{ margin: 16, padding: 16 }}>
         <Grid container>
@@ -23,7 +23,7 @@ const AddTodo = React.memo(
             />
           </Grid>
           <Grid>
-            <Button onClick={() => addTodo()}>Add</Button>
+            <Button onClick={() => handleButtonClick()}>Add</Button>
           </Grid>
         </Grid>
       </Paper>
