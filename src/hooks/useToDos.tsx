@@ -14,7 +14,7 @@ const useToDos = (initialValue = []) => {
     todos,
     addTodo(text: string) {
       if (text) {
-        setTodos([...todos, { id, text, checked: false }]);
+        setTodos(todos.concat({ id, text, checked: false }));
         setId(id + 1);
       }
     },

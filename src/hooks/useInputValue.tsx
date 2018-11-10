@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 
 const useInputValue = (initialValue = '') => {
   const [inputValue, setInputValue] = useState(initialValue);
@@ -10,14 +10,15 @@ const useInputValue = (initialValue = '') => {
     },
     clearInput() {
       return setInputValue('');
-    },
-    keyInput({ which, keyCode }: KeyboardEvent, callback: Function) {
-      if (which === 13 || keyCode === 13) {
-        callback(inputValue);
-        return true;
-      }
-      return false;
     }
+    // keyInput(
+    //   { which, keyCode }: React.KeyboardEvent<HTMLElement>,
+    //   callback: Function
+    // ) {
+    //   if (which === 13 || keyCode === 13) {
+    //     callback(inputValue);
+    //   }
+    // }
   };
 };
 

@@ -20,7 +20,7 @@ const App = () => {
       <AddToDo
         inputValue={inputValue}
         handleInputChange={changeInput}
-        handleInputKeypress={keyInput}
+        // handleInputKeypress={keyInput}
         handleButtonClick={clearInput}
         addTodo={addTodo}
       />

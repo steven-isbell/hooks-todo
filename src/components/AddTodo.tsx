@@ -6,18 +6,12 @@ import Grid from '@material-ui/core/Grid';
 
 interface IAddToDoProps {
   handleInputChange: Function;
-  handleInputKeypress: React.KeyboardEventHandler;
   value: string;
   addTodo: Function;
 }
 
 const AddTodo = React.memo(
-  ({
-    handleInputChange,
-    handleInputKeypress,
-    value,
-    addTodo
-  }: IAddToDoProps) => {
+  ({ handleInputChange, value, addTodo }: IAddToDoProps) => {
     return (
       <Paper style={{ margin: 16, padding: 16 }}>
         <Grid container>
@@ -25,7 +19,6 @@ const AddTodo = React.memo(
             <TextField
               placeholder="ToDo Content"
               value={value}
-              onKeyPress={handleInputKeypress}
               onChange={() => handleInputChange()}
             />
           </Grid>
