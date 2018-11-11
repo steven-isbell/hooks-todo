@@ -1,11 +1,11 @@
 import { useState, FormEvent } from 'react';
 
-const useInputValue = (initialValue = '') => {
+const useInputValue = (initialValue: string = '') => {
   const [inputValue, setInputValue] = useState(initialValue);
 
   return {
     inputValue,
-    changeInput({ currentTarget: { value } }: FormEvent<HTMLInputElement>) {
+    changeInput({ currentTarget: { value } }: FormEvent<HTMLTextAreaElement>) {
       return setInputValue(value);
     },
     clearInput() {

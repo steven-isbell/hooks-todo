@@ -16,11 +16,11 @@ interface IToDoListProps {
 }
 
 const ToDoList = React.memo(
-  ({ items, handleItemDelete, handleItemCheck }: IToDoListProps) => (
-    <Paper style={{ margin: 16 }}>
-      <List style={{ overflow: 'scroll' }}>
-        {items.length > 0 &&
-          items.map((item: Item) => (
+  ({ items, handleItemDelete, handleItemCheck }: IToDoListProps) =>
+    items.length > 0 ? (
+      <Paper style={{ margin: 16 }}>
+        <List style={{ overflow: 'scroll' }}>
+          {items.map((item: Item) => (
             <ToDoItem
               key={item.id}
               divider={item.id !== items.length - 1}
@@ -30,9 +30,9 @@ const ToDoList = React.memo(
               text={item.text}
             />
           ))}
-      </List>
-    </Paper>
-  )
+        </List>
+      </Paper>
+    ) : null
 );
 
 export default ToDoList;

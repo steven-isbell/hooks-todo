@@ -22,6 +22,7 @@ const App = () => {
         handleInputChange={changeInput}
         // handleInputKeypress={keyInput}
         handleButtonClick={addTodo}
+        clearInput={clearInput}
       />
       <ToDoList
         items={todos}
