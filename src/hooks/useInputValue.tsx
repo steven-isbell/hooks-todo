@@ -10,15 +10,15 @@ const useInputValue = (initialValue: string = '') => {
     },
     clearInput() {
       return setInputValue('');
+    },
+    handleEnter(
+      { which, keyCode }: React.KeyboardEvent<HTMLElement>,
+      callback: Function
+    ) {
+      if (which === 13 || keyCode === 13) {
+        callback(inputValue);
+      }
     }
-    // keyInput(
-    //   { which, keyCode }: React.KeyboardEvent<HTMLElement>,
-    //   callback: Function
-    // ) {
-    //   if (which === 13 || keyCode === 13) {
-    //     callback(inputValue);
-    //   }
-    // }
   };
 };
 

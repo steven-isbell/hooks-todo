@@ -6,8 +6,9 @@ import Grid from '@material-ui/core/Grid';
 
 interface IAddToDoProps {
   handleInputChange: Function;
-  handleButtonClick: Function;
+  handleAddTodo: Function;
   clearInput: Function;
+  handleEnter: Function;
   value: string;
 }
 
@@ -15,9 +16,15 @@ const AddTodo = React.memo(
   ({
     handleInputChange,
     value,
-    handleButtonClick,
-    clearInput
+    handleAddTodo,
+    clearInput,
+    handleEnter
   }: IAddToDoProps) => {
+    const addTodoCallback = () => {
+      clearInput();
+      handleAddTodo(value);
+    };
+
     return (
       <Paper style={{ margin: 16, padding: 16 }}>
         <Grid container>
@@ -26,13 +33,13 @@ const AddTodo = React.memo(
               placeholder="ToDo Content"
               value={value}
               onChange={e => handleInputChange(e)}
+              onKeyPress={e => handleEnter(e, addTodoCallback)}
             />
           </Grid>
           <Grid>
             <Button
               onClick={() => {
-                handleButtonClick(value);
-                clearInput();
+                addTodoCallback();
               }}
             >
               Add
