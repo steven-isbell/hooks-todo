@@ -4,11 +4,7 @@ import List from '@material-ui/core/List';
 
 import ToDoItem from './ToDoItem';
 
-type Item = {
-  id: number;
-  checked: boolean;
-  text: string;
-};
+import ToDo from '../types/ToDo';
 interface IToDoListProps {
   items: any[];
   handleItemDelete: Function;
@@ -20,7 +16,7 @@ const ToDoList = React.memo(
     items.length > 0 ? (
       <Paper style={{ margin: 16 }}>
         <List style={{ overflow: 'scroll' }}>
-          {items.map((item: Item) => (
+          {items.map((item: ToDo) => (
             <ToDoItem
               key={item.id}
               divider={item.id !== items.length - 1}

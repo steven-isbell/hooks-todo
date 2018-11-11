@@ -9,8 +9,9 @@
   transition: all 500ms ease;
   background: #4a72da;
   box-shadow: 1px 2px 3px #999;
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
   display: inline-block;
   border-radius: 10px;
   animation: wave 2s ease infinite;
@@ -31,25 +32,16 @@
 .progress span:nth-child(5) {
   animation-delay: 400ms;
 }
-.progress span:nth-child(6) {
-  animation-delay: 500ms;
-}
-.progress span:nth-child(7) {
-  animation-delay: 600ms;
-}
-.progress span:nth-child(8) {
-  animation-delay: 700ms;
-}
 
 @keyframes wave {
   0%,
   40%,
   100% {
     transform: translate(0, 0);
-    background-color: #4a72da;
+    background-color: #4051b5;
   }
   10% {
     transform: translate(0, -15px);
-    background-color: red;
+    background-color: #f50157;
   }
 }

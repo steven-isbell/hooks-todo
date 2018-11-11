@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-type ToDo = {
-  id: number;
-  text: string;
-  checked: boolean;
-};
+import ToDo from '../types/ToDo';
 
 const useToDos = (initialValue: ToDo[] = []) => {
   const [todos, setTodos] = useState(initialValue);

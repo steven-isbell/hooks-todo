@@ -8,9 +8,6 @@ const Loader = () => {
       <span />
       <span />
       <span />
-      <span />
-      <span />
-      <span />
     </div>
   );
 };

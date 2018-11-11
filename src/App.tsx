@@ -18,7 +18,7 @@ const App = () => {
   const { todos, addTodo, removeTodo, checkTodo } = useToDos();
 
   return (
-    <React.Suspense fallback={<h1>Loading...</h1>}>
+    <React.Suspense fallback={<Loader />}>
       <Paper
         elevation={0}
         style={{ padding: 0, margin: 0, backgroundColor: 'inherit' }}
@@ -32,7 +32,6 @@ const App = () => {
             handleAddTodo={addTodo}
             clearInput={clearInput}
           />
-          <Loader />
           <ToDoList
             items={todos}
             handleItemCheck={checkTodo}
