@@ -6,7 +6,7 @@ type ToDo = {
   checked: boolean;
 };
 
-const useToDos = (initialValue = []) => {
+const useToDos = (initialValue: ToDo[] = []) => {
   const [todos, setTodos] = useState(initialValue);
   const [id, setId] = useState(0);
 
@@ -19,14 +19,13 @@ const useToDos = (initialValue = []) => {
       }
     },
     checkTodo(id: number) {
-      setTodos(
-        todos.map((todo: ToDo) => {
-          if (todo.id === id) {
-            todo.checked = !todo.checked;
-          }
-          return todo;
-        })
-      );
+      const todoCheck = todos.map((todo: ToDo) => {
+        if (todo.id === id) {
+          todo.checked = !todo.checked;
+        }
+        return todo;
+      });
+      setTodos(todoCheck);
     },
     removeTodo(id: number) {
       setTodos(todos.filter((todo: ToDo) => todo.id !== id));
