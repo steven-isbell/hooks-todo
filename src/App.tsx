@@ -18,28 +18,30 @@ const App = () => {
   const { todos, addTodo, removeTodo, checkTodo } = useToDos();
 
   return (
-    <React.Suspense fallback={<Loader />}>
-      <Paper
-        elevation={0}
-        style={{ padding: 0, margin: 0, backgroundColor: 'inherit' }}
-      >
-        <Header />
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <AddToDo
-            value={inputValue}
-            handleInputChange={changeInput}
-            handleEnter={handleEnter}
-            handleAddTodo={addTodo}
-            clearInput={clearInput}
-          />
-          <ToDoList
-            items={todos}
-            handleItemCheck={checkTodo}
-            handleItemDelete={removeTodo}
-          />
-        </div>
-      </Paper>
-    </React.Suspense>
+    <Paper
+      elevation={0}
+      style={{ padding: 0, margin: 0, backgroundColor: 'inherit' }}
+    >
+      <Header />
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <AddToDo
+          value={inputValue}
+          handleInputChange={changeInput}
+          handleEnter={handleEnter}
+          handleAddTodo={addTodo}
+          clearInput={clearInput}
+        />
+        {Boolean(todos.length) && (
+          <React.Suspense fallback={<Loader />}>
+            <ToDoList
+              items={todos}
+              handleItemCheck={checkTodo}
+              handleItemDelete={removeTodo}
+            />
+          </React.Suspense>
+        )}
+      </div>
+    </Paper>
   );
 };
 
