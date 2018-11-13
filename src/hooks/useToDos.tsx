@@ -11,17 +11,19 @@ const useToDos = (initialValue: ToDo[] = []) => {
       method: 'POST',
       body: JSON.stringify({
         query: `
+        {
           todos {
             id
             text
             completed
           }
+        }
         `
       }),
-      headers: { 'Content Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' }
     })
       .then((response: { json: Function }) => response.json())
-      .then(console.log)
+      .then(response => setTodos(response.data.todos))
       .catch(console.log);
   });
 

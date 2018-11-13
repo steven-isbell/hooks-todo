@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-u;
 // No TS Support -> Can't use concurrent mode in current types version -> no maxDuration with suspense
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
