@@ -7,9 +7,8 @@ const useToDos = (initialValue: ToDo[] = []) => {
   const [id, setId] = useState(0);
 
   useEffect(() => {
-    fetch({
+    fetch('http://localhost:3001/graphql', {
       method: 'POST',
-      url: 'http://localhost:3001/graphql',
       body: JSON.stringify({
         query: `
           todos {
@@ -18,10 +17,12 @@ const useToDos = (initialValue: ToDo[] = []) => {
             completed
           }
         `
-      })
+      }),
+      headers: { 'Content Type': 'application/json' }
     })
       .then((response: { json: Function }) => response.json())
-      .then(console.log);
+      .then(console.log)
+      .catch(console.log);
   });
 
   return {
