@@ -22,7 +22,7 @@ const useToDos = (initialValue: ToDo[] = []) => {
     })
       .then((response: { json: Function }) => response.json())
       .then(console.log);
-  }, []);
+  });
 
   return {
     todos,
