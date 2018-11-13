@@ -9,9 +9,10 @@ import useInputValue from './hooks/useInputValue';
 import useToDos from './hooks/useToDos';
 
 import './App.css';
-// import ToDoList from './components/ToDoList';
 
 const ToDoList = React.lazy(() => import('./components/ToDoList'));
+
+// TODO: Create Cache and hit graphql service (simple)
 
 const App = () => {
   const { inputValue, changeInput, clearInput, handleEnter } = useInputValue();
