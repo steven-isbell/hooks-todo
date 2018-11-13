@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import ToDo from '../types/ToDo';
+import { graphQLFetch } from '../utils';
 
 const useToDos = (initialValue: ToDo[] = []) => {
   const [todos, setTodos] = useState(initialValue);
-  const [id, setId] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:3001/graphql', {
-      method: 'POST',
-      body: JSON.stringify({
-        query: `
+    graphQLFetch({
+      query: `
         {
           todos {
             id
@@ -19,34 +17,54 @@ const useToDos = (initialValue: ToDo[] = []) => {
           }
         }
         `
-      }),
-      headers: { 'Content-Type': 'application/json' }
     })
-      .then((response: { json: Function }) => response.json())
-      .then(response => setTodos(response.data.todos))
+      .then(response => {
+        setTodos(response.data.todos);
+        return;
+      })
       .catch(console.log);
   });
 
+  const addTodo = async (text: string) => {
+    if (text) {
+      try {
+        const response = await graphQLFetch({
+          query: `
+          mutation {
+            addTodo(text: ${text}) {
+              id
+              text
+              completed
+            }
+          }
+        `
+        });
+        setTodos(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const checkTodo = (id: number) => {
+    const todoCheck = todos.map((todo: ToDo) => {
+      if (todo.id === id) {
+        todo.checked = !todo.checked;
+      }
+      return todo;
+    });
+    setTodos(todoCheck);
+  };
+
+  const removeTodo = (id: number) => {
+    setTodos(todos.filter((todo: ToDo) => todo.id !== id));
+  };
+
   return {
     todos,
-    addTodo(text: string) {
-      if (text) {
-        setTodos(todos.concat({ id, text, checked: false }));
-        setId(id + 1);
-      }
-    },
-    checkTodo(id: number) {
-      const todoCheck = todos.map((todo: ToDo) => {
-        if (todo.id === id) {
-          todo.checked = !todo.checked;
-        }
-        return todo;
-      });
-      setTodos(todoCheck);
-    },
-    removeTodo(id: number) {
-      setTodos(todos.filter((todo: ToDo) => todo.id !== id));
-    }
+    addTodo,
+    checkTodo,
+    removeTodo
   };
 };
 
