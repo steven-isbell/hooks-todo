@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import ToDo from '../types/ToDo';
 import { graphQLFetch } from '../utils';
 
-const useToDos = (initialValue: ToDo[] = []) => {
-  const [todos, setTodos] = useState(initialValue);
+const useToDos = () => {
+  const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    graphQLFetch({
-      query: `
+  useEffect(
+    () => {
+      graphQLFetch({
+        query: `
         {
           todos {
             id
@@ -17,13 +18,12 @@ const useToDos = (initialValue: ToDo[] = []) => {
           }
         }
         `
-    })
-      .then(response => {
-        setTodos(response.data.todos);
-        return;
       })
-      .catch(console.log);
-  });
+        .then(response => setTodos(todos.concat(response.data.todos)))
+        .catch(console.log);
+    },
+    [setTodos]
+  );
 
   const addTodo = async (text: string) => {
     if (text) {
@@ -31,7 +31,7 @@ const useToDos = (initialValue: ToDo[] = []) => {
         const response = await graphQLFetch({
           query: `
           mutation {
-            addTodo(text: ${text}) {
+            addTodo(text: "${text}") {
               id
               text
               completed
@@ -39,7 +39,7 @@ const useToDos = (initialValue: ToDo[] = []) => {
           }
         `
         });
-        setTodos(response.data);
+        setTodos(response.data.addTodo);
       } catch (e) {
         console.log(e);
       }

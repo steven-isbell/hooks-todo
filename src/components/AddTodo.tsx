@@ -37,13 +37,7 @@ const AddTodo = React.memo(
             />
           </Grid>
           <Grid>
-            <Button
-              onClick={() => {
-                addTodoCallback();
-              }}
-            >
-              Add
-            </Button>
+            <Button onClick={addTodoCallback}>Add</Button>
           </Grid>
         </Grid>
       </Paper>
