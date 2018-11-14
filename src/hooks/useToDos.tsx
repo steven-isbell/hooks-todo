@@ -46,14 +46,24 @@ const useToDos = () => {
     }
   };
 
-  const checkTodo = (id: number) => {
-    const todoCheck = todos.map((todo: ToDo) => {
-      if (todo.id === id) {
-        todo.checked = !todo.checked;
-      }
-      return todo;
-    });
-    setTodos(todoCheck);
+  const checkTodo = async (id: number) => {
+    try {
+      const response = await graphQLFetch({
+        query: `
+          mutation {
+            completeTodo(id: ${id}) {
+              id
+              text
+              completed
+            }
+          }
+        `
+      });
+
+      setTodos(response.data.completeTodo);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const removeTodo = async (id: number) => {
