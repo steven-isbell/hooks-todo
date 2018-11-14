@@ -56,8 +56,23 @@ const useToDos = () => {
     setTodos(todoCheck);
   };
 
-  const removeTodo = (id: number) => {
-    setTodos(todos.filter((todo: ToDo) => todo.id !== id));
+  const removeTodo = async (id: number) => {
+    try {
+      const response = await graphQLFetch({
+        query: `
+          mutation {
+            deleteTodo(id: ${id}) {
+              id
+              text
+              completed
+            }
+          }
+        `
+      });
+      setTodos(response.data.deleteTodo);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return {
