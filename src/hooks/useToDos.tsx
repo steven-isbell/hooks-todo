@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import { unstable_createResource as createResource } from 'react-cache';
 
-import ToDo from '../types/ToDo';
 import { graphQLFetch } from '../utils';
 
 const useToDos = () => {
