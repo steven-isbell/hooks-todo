@@ -2,9 +2,9 @@ import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 
-import ToDoItem from './ToDoItem';
+import ToDoItem from '../ToDoItem/ToDoItem';
 
-import ToDo from '../types/ToDo';
+import ToDo from '../../types/ToDo';
 interface IToDoListProps {
   items: ToDo[];
   handleItemDelete: Function;

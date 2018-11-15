@@ -1,16 +1,16 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 
-import Header from './components/Header';
-import AddToDo from './components/AddTodo';
-import Loader from './components/Loader';
+import Header from './components/Header/Header';
+import AddToDo from './components/AddTodo/AddTodo';
+import Loader from './components/Loader/Loader';
 
 import useInputValue from './hooks/useInputValue';
 import useToDos from './hooks/useToDos';
 
 import './App.css';
 
-const ToDoList = React.lazy(() => import('./components/ToDoList'));
+const ToDoList = React.lazy(() => import('./components/ToDoList/ToDoList'));
 
 // TODO: Create Cache and hit graphql service (simple)
 
