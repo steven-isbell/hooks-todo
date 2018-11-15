@@ -1,7 +1,7 @@
 type ToDo = {
   id: number;
   text: string;
-  checked: boolean;
+  completed: boolean;
 };
 
 export default ToDo;

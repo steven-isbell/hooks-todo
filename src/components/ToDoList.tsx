@@ -6,7 +6,7 @@ import ToDoItem from './ToDoItem';
 
 import ToDo from '../types/ToDo';
 interface IToDoListProps {
-  items: any[];
+  items: ToDo[];
   handleItemDelete: Function;
   handleItemCheck: Function;
 }
@@ -15,16 +15,18 @@ const ToDoList = React.memo(
   ({ items, handleItemDelete, handleItemCheck }: IToDoListProps) => (
     <Paper style={{ margin: 16 }}>
       <List style={{ overflow: 'scroll' }}>
-        {items.map((item: ToDo) => (
-          <ToDoItem
-            key={item.id}
-            divider={item.id !== items.length - 1}
-            handleClick={() => handleItemDelete(item.id)}
-            handleCheckToggle={() => handleItemCheck(item.id)}
-            checked={item.checked}
-            text={item.text}
-          />
-        ))}
+        {items.map((item: ToDo) => {
+          return (
+            <ToDoItem
+              key={item.id}
+              divider={item.id !== items.length - 1}
+              handleClick={() => handleItemDelete(item.id)}
+              handleCheckToggle={() => handleItemCheck(item.id)}
+              checked={item.completed}
+              text={item.text}
+            />
+          );
+        })}
       </List>
     </Paper>
   )

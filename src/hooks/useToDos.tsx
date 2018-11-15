@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { unstable_createResource as createResource } from 'react-cache';
 
 import { graphQLFetch } from '../utils';
 
