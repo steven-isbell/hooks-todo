@@ -1,9 +1,12 @@
-export const graphQLFetch = async (query: { query: string }) => {
-  const response = await fetch('http://localhost:3001/graphql', {
+import axios, { AxiosResponse } from 'axios';
+
+export const graphQLFetch = async (query: {
+  query: string;
+}): Promise<AxiosResponse> => {
+  const { data } = await axios.post('http://localhost:3001/graphql', {
     method: 'POST',
-    body: JSON.stringify(query),
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include'
+    data: query,
+    withCredentials: true
   });
-  return response.json();
+  return data;
 };
