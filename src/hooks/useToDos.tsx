@@ -45,12 +45,12 @@ const useToDos = () => {
     }
   };
 
-  const checkTodo = async (id: number) => {
+  const checkTodo = async (id: string) => {
     try {
       const response = await graphQLFetch({
         query: `
           mutation {
-            completeTodo(id: ${id}) {
+            completeTodo(id: "${id}") {
               id
               text
               completed
@@ -65,12 +65,12 @@ const useToDos = () => {
     }
   };
 
-  const removeTodo = async (id: number) => {
+  const removeTodo = async (id: string) => {
     try {
       const response = await graphQLFetch({
         query: `
           mutation {
-            deleteTodo(id: ${id}) {
+            deleteTodo(id: "${id}") {
               id
               text
               completed

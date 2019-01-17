@@ -33,5 +33,6 @@
   ],
   "devDependencies": {
     "react-testing-library": "^5.2.3"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
