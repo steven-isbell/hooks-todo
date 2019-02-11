@@ -21,7 +21,7 @@ const useToDos = () => {
         .then(response => setTodos(todos.concat(response.data.todos)))
         .catch(console.log);
     },
-    [setTodos]
+    []
   );
 
   const addTodo = async (text: string) => {

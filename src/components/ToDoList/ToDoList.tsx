@@ -14,7 +14,7 @@ interface IToDoListProps {
 const ToDoList = React.memo(
   ({ items, handleItemDelete, handleItemCheck }: IToDoListProps) => (
     <Paper style={{ margin: 16 }}>
-      <List style={{ overflow: 'scroll' }}>
+      <List style={{ overflow: 'scroll', paddingBottom: 0 }}>
         {items.map((item: ToDo) => {
           return (
             <ToDoItem

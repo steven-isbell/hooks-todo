@@ -23,6 +23,7 @@ const ToDoItem = React.memo(
     text
   }: IToDoItemProps) => {
     const itemTextRef = useRef(null);
+
     const checkToggleLineThrough = e => {
       handleCheckToggle(e);
       if (!itemTextRef.current.style.textDecoration) {
@@ -31,6 +32,7 @@ const ToDoItem = React.memo(
         itemTextRef.current.style.textDecoration = '';
       }
     };
+
     return (
       <ListItem divider={divider}>
         <Checkbox
